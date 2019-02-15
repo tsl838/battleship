@@ -12,6 +12,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
+	#Testing
     private static List<Ship> myFleet;
     private static List<Ship> enemyFleet;
     private static ColoredPrinter console;
@@ -20,7 +21,11 @@ public class Main {
         console = new ColoredPrinter.Builder(1, false).build();
 
         console.setForegroundColor(Ansi.FColor.MAGENTA);
+<<<<<<< HEAD
         console.println("                                     $|__");
+=======
+        console.println("                                     |*|");
+>>>>>>> c9b2dcc93b384a056d50ddb434558133b01a58a3
         console.println("                                     |\\/");
         console.println("                                     ---");
         console.println("                                     / | [");
