@@ -12,15 +12,26 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
-	#Testing
     private static List<Ship> myFleet;
     private static List<Ship> enemyFleet;
     private static ColoredPrinter console;
 
+	public static final String ANSI_RESET = "\u001B[0m";
+	public static final String ANSI_BLACK = "\u001B[30m";
+	public static final String ANSI_RED = "\u001B[31m";
+	public static final String ANSI_GREEN = "\u001B[32m";
+	public static final String ANSI_YELLOW = "\u001B[33m";
+	public static final String ANSI_BLUE = "\u001B[34m";
+	public static final String ANSI_PURPLE = "\u001B[35m";
+	public static final String ANSI_CYAN = "\u001B[36m";
+	public static final String ANSI_WHITE = "\u001B[37m";
+
     public static void main(String[] args) {
         console = new ColoredPrinter.Builder(1, false).build();
 
+		
         console.setForegroundColor(Ansi.FColor.MAGENTA);
+
         console.println("                                     |*|");
         console.println("                                     |\\/");
         console.println("                                     ---");
@@ -59,40 +70,42 @@ public class Main {
 
         do {
             console.println("");
-            console.println("Player, it's your turn");
-            console.println("Enter coordinates for your shot :");
+            System.out.println(ANSI_GREEN +"Player, it's your turn" + ANSI_RESET);
+            System.out.println(ANSI_GREEN +"Enter coordinates for your shot :" + ANSI_RESET);
             Position position = parsePosition(scanner.next());
             boolean isHit = GameController.checkIsHit(enemyFleet, position);
             if (isHit) {
                 beep();
 
-                console.println("                \\         .  ./");
-                console.println("              \\      .:\" \";'.:..\" \"   /");
-                console.println("                  (M^^.^~~:.'\" \").");
-                console.println("            -   (/  .    . . \\ \\)  -");
-                console.println("               ((| :. ~ ^  :. .|))");
-                console.println("            -   (\\- |  \\ /  |  /)  -");
-                console.println("                 -\\  \\     /  /-");
-                console.println("                   \\  \\   /  /");
+                
+                System.out.println(ANSI_BLUE + "                \\         .  ./");
+                System.out.println("              \\      .:\" \";'.:..\" \"   /");
+                System.out.println("                  (M^^.^~~:.'\" \").");
+                System.out.println("            -   (/  .    . . \\ \\)  -");
+                System.out.println("               ((| :. ~ ^  :. .|))");
+                System.out.println("            -   (\\- |  \\ /  |  /)  -");
+                System.out.println("                 -\\  \\     /  /-");
+                System.out.println("                   \\  \\   /  /"+ ANSI_RESET);
             }
 
-            console.println(isHit ? "Yeah ! Nice hit !" : "Miss");
+            System.out.println(isHit ? ANSI_RED + "Yeah ! Nice hit !" : "Miss" + ANSI_RESET);
 
             position = getRandomPosition();
             isHit = GameController.checkIsHit(myFleet, position);
             console.println("");
-            console.println(String.format("Computer shoot in %s%s and %s", position.getColumn(), position.getRow(), isHit ? "hit your ship !" : "miss"));
+            System.out.println(ANSI_YELLOW + String.format("Computer shoot in %s%s and %s", position.getColumn(), position.getRow(), isHit ? "hit your ship !" : "miss") + ANSI_RESET);
             if (isHit) {
                 beep();
-
-                console.println("                \\         .  ./");
-                console.println("              \\      .:\" \";'.:..\" \"   /");
-                console.println("                  (M^^.^~~:.'\" \").");
-                console.println("            -   (/  .    . . \\ \\)  -");
-                console.println("               ((| :. ~ ^  :. .|))");
-                console.println("            -   (\\- |  \\ /  |  /)  -");
-                console.println("                 -\\  \\     /  /-");
-                console.println("                   \\  \\   /  /");
+             
+			    
+                System.out.println(ANSI_BLUE + "                \\         .  ./");
+                System.out.println("              \\      .:\" \";'.:..\" \"   /");
+                System.out.println("                  (M^^.^~~:.'\" \").");
+                System.out.println("            -   (/  .    . . \\ \\)  -");
+                System.out.println("               ((| :. ~ ^  :. .|))");
+                System.out.println("            -   (\\- |  \\ /  |  /)  -");
+                System.out.println("                 -\\  \\     /  /-");
+                System.out.println("                   \\  \\   /  /"+ ANSI_RESET);
 
             }
         } while (true);
