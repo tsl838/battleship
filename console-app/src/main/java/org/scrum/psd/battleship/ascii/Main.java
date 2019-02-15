@@ -20,7 +20,7 @@ public class Main {
         console = new ColoredPrinter.Builder(1, false).build();
 
         console.setForegroundColor(Ansi.FColor.MAGENTA);
-        console.println("                                     |__");
+        console.println("                                     |**|");
         console.println("                                     |\\/");
         console.println("                                     ---");
         console.println("                                     / | [");
