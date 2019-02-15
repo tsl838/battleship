@@ -12,6 +12,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
+	#Testing
     private static List<Ship> myFleet;
     private static List<Ship> enemyFleet;
     private static ColoredPrinter console;
