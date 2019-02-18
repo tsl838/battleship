@@ -12,7 +12,6 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
-	#Testing
     private static List<Ship> myFleet;
     private static List<Ship> enemyFleet;
     private static ColoredPrinter console;
@@ -63,6 +62,16 @@ public class Main {
             console.println("Enter coordinates for your shot :");
             Position position = parsePosition(scanner.next());
             boolean isHit = GameController.checkIsHit(enemyFleet, position);
+			boolean isInScrope = GameController.checkScrope(enemyFleet, position);
+			console.println("you shoot in " + position.getColumn() + position.getRow());
+			if(isInScrope)
+			{
+				console.println("you shoot in the scrope " + position.getColumn() + position.getRow());
+			}
+			else
+			{
+				
+			}
             if (isHit) {
                 beep();
 

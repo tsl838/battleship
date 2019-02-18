@@ -77,5 +77,16 @@ public class GameControllerTest {
 
         Assert.assertTrue(result);
     }
+	
+	@Test
+    public void testInput() {
+        List<Position> positions = Arrays.asList(new Position(Letter.A, 1000), new Position(Letter.A, 2), new Position(Letter.A, 3));
+        Ship ship = new Ship("TestShip", 4, positions);
+
+        boolean result = GameController.isShipValid(ship);
+
+        Assert.assertFalse(result);
+    }
+	
 
 }
