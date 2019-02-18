@@ -85,10 +85,10 @@ public class Main {
                 continue;
             }
             boolean isHit = GameController.checkIsHit(enemyFleet, position);
-            //if (!checkPositionLetter(position)) {
-             //   console.println("This position is outside the playing field " + position.getColumn() + position.getRow());
-            //    continue;
-            //}
+            if (position.getRow() < 1  || position.getRow() > 8 ) {
+                console.println("This position is outside the playing field " + position.getRow());
+                continue;
+            }
 			console.println("you shoot in " + position.getColumn() + position.getRow());
 
             if (isHit) {
