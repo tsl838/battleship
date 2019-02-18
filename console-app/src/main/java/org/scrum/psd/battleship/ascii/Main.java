@@ -7,6 +7,7 @@ import org.scrum.psd.battleship.controller.dto.Letter;
 import org.scrum.psd.battleship.controller.dto.Position;
 import org.scrum.psd.battleship.controller.dto.Ship;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
@@ -17,6 +18,8 @@ public class Main {
     private static List<Ship> enemyFleet;
     private static ColoredPrinter console;
     private static List<Position> myHits;
+    
+    //private static List<Letter> columnLetter = Arrays.asList(new Letter("A"),"B","C","D","E","F","G","H");
 
 	public static final String ANSI_RESET = "\u001B[0m";
 	public static final String ANSI_BLACK = "\u001B[30m";
@@ -74,18 +77,20 @@ public class Main {
             console.println("");
             System.out.println(ANSI_GREEN +"Player, it's your turn" + ANSI_RESET);
             System.out.println(ANSI_GREEN +"Enter coordinates for your shot :" + ANSI_RESET);
-            Position position = parsePosition(scanner.next());
+            Position position = null;
+            try {
+            position = parsePosition(scanner.next());
+            } catch(Exception e) {
+                console.println("This position is outside the playing field ");
+                continue;
+            }
             boolean isHit = GameController.checkIsHit(enemyFleet, position);
-			boolean isInScrope = GameController.checkScrope(enemyFleet, position);
+            //if (!checkPositionLetter(position)) {
+             //   console.println("This position is outside the playing field " + position.getColumn() + position.getRow());
+            //    continue;
+            //}
 			console.println("you shoot in " + position.getColumn() + position.getRow());
-			if(isInScrope)
-			{
-				console.println("you shoot in the scrope " + position.getColumn() + position.getRow());
-			}
-			else
-			{
-				
-			}
+
             if (isHit) {
                 beep();
 
@@ -154,6 +159,15 @@ position = getRandomPosition();
         
 
         return position;
+    }
+
+    private static Boolean checkPositionLetter(Position pos) {
+        for(Letter s : Letter.values()) {
+            if(s.equals(pos.getColumn())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private static void InitializeGame() {

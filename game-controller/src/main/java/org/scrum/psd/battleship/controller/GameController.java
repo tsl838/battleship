@@ -32,26 +32,6 @@ public class GameController {
     }
 
 	
-	    public static boolean checkScrope(Collection<Ship> scropes, Position shot) {
-        if (scropes == null) {
-            throw new IllegalArgumentException("scrope is null");
-        }
-
-        if (shot == null) {
-            throw new IllegalArgumentException("scrope is null");
-        }
-
-        for (Ship scrope : scropes) {
-            for (Position position : scrope.getPositions()) {
-                if (position.equals(shot)) {
-                    return true;
-                }
-            }
-        }
-
-        return false;
-    }
-	
     public static List<Ship> initializeShips() {
         return Arrays.asList(
                 new Ship("Aircraft Carrier", 5, Color.CADET_BLUE),

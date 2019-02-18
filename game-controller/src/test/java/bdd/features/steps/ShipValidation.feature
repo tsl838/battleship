@@ -7,7 +7,7 @@ Feature: Validate ships
   Scenario: Valid ship placement
     Given I have a 5 ship with 5 positions
     When I check if the ship is valid
-    Then the result should be false
+    Then the result should be true
 
   @Runme
   Scenario: Invalid ship placement

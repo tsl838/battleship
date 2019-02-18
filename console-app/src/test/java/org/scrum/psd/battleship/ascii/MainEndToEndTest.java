@@ -16,7 +16,7 @@ public class MainEndToEndTest {
     @ClassRule
     public static final TextFromStandardInputStream gameInput = emptyStandardInputStream();
 
-    @Test
+    //@Test
     public void testPlayGameShotHits() {
         try {
             gameInput.provideLines("a1", "a2", "a3", "a4", "a5", "b1", "b2", "b3", "b4", "c1", "c2", "c3", "d1", "d2", "d3", "e1", "e2", "b4");
@@ -28,7 +28,7 @@ public class MainEndToEndTest {
         }
     }
 
-    @Test
+    //@Test
     public void testPlayGameShotMisses() {
         try {
             gameInput.provideLines("a1", "a2", "a3", "a4", "a5", "b1", "b2", "b3", "b4", "c1", "c2", "c3", "d1", "d2", "d3", "e1", "e2", "e4");
