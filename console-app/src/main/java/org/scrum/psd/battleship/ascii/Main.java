@@ -10,11 +10,13 @@ import org.scrum.psd.battleship.controller.dto.Ship;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Main {
     private static List<Ship> myFleet;
     private static List<Ship> enemyFleet;
     private static ColoredPrinter console;
+    private static List<Position> myHits;
 
 	public static final String ANSI_RESET = "\u001B[0m";
 	public static final String ANSI_BLACK = "\u001B[30m";
@@ -100,7 +102,14 @@ public class Main {
 
             System.out.println(isHit ? ANSI_RED + "Yeah ! Nice hit !" : "Miss" + ANSI_RESET);
 
-            position = getRandomPosition();
+            
+                    if (myHits == null) {
+            myHits = new ArrayList<Position>(64);
+        }
+
+position = getRandomPosition();
+myHits.add(position);
+
             isHit = GameController.checkIsHit(myFleet, position);
             console.println("");
             System.out.println(ANSI_YELLOW + String.format("Computer shoot in %s%s and %s", position.getColumn(), position.getRow(), isHit ? "hit your ship !" : "miss") + ANSI_RESET);
@@ -138,6 +147,12 @@ public class Main {
         Letter letter = Letter.values()[random.nextInt(lines)];
         int number = random.nextInt(rows);
         Position position = new Position(letter, number);
+
+        while(myHits.contains(position)) {
+position = getRandomPosition();
+        }
+        
+
         return position;
     }
 
