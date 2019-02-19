@@ -154,7 +154,7 @@ myHits.add(position);
         Position position = new Position(letter, number);
 
         while(myHits.contains(position)) {
-position = getRandomPosition();
+    position = getRandomPosition();
         }
         
 
