@@ -18,6 +18,8 @@ public class Main {
     private static List<Ship> enemyFleet;
     private static ColoredPrinter console;
     private static List<Position> myHits;
+    private static List<String> myFleetPositions = new ArrayList<String>();
+    
     
     //private static List<Letter> columnLetter = Arrays.asList(new Letter("A"),"B","C","D","E","F","G","H");
 
@@ -178,6 +180,7 @@ myHits.add(position);
 
     private static void InitializeMyFleet() {
         Scanner scanner = new Scanner(System.in);
+        myFleetPositions = new ArrayList<String>();
         myFleet = GameController.initializeShips();
 
         console.println("Please position your fleet (Game board has size from A to H and 1 to 8) :");
@@ -187,9 +190,17 @@ myHits.add(position);
             console.println(String.format("Please enter the positions for the %s (size: %s)", ship.getName(), ship.getSize()));
             for (int i = 1; i <= ship.getSize(); i++) {
                 console.println(String.format("Enter position %s of %s (i.e A3):", i, ship.getSize()));
-
                 String positionInput = scanner.next();
-                ship.addPosition(positionInput);
+
+                if (myFleetPositions.contains(positionInput)) {
+                    console.println("Ships must notoverlap each other, please input the fleet again");
+                    InitializeMyFleet();
+                }
+                else
+                {
+                    ship.addPosition(positionInput);
+                    myFleetPositions.add(positionInput);
+                }               
             }
         }
     }
