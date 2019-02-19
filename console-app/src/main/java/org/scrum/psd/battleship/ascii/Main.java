@@ -29,7 +29,7 @@ public class Main {
 	public static final String ANSI_BLUE = "\u001B[34m";
 	public static final String ANSI_PURPLE = "\u001B[35m";
 	public static final String ANSI_CYAN = "\u001B[36m";
-	public static final String ANSI_WHITE = "\u001B[37m"
+	public static final String ANSI_WHITE = "\u001B[37m";
 
     public static void main(String[] args) {
         console = new ColoredPrinter.Builder(1, false).build();
