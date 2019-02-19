@@ -1,0 +1,15 @@
+language: java
+install: true
+install: gradle wrapper --gradle-version 4.2
+
+
+jdk:
+  - oraclejdk8
+
+script:
+  - ./gradlew build
+  - ./gradlew sonarqube   -Dsonar.projectKey=lorenzcheung_Battleship_Java   -Dsonar.organization=lorenzcheung-github   -Dsonar.host.url=https://sonarcloud.io   -Dsonar.login=e5ee2eb0fbfecabf52322bd7e5241216019892ad
+
+
+notifications:
+  slack: psdhk:O79TIwZZETExPwdbCRM7EJYJ
